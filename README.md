@@ -4,8 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Building-orange?style=for-the-badge&logo=gitbook&logoColor=white" />
-  <img src="https://img.shields.io/badge/Stack-Java%20%7C%20Python%20%7C%20DevOps-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Interface-Pixel%20Art-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Stack-Go%20%7C%20TypeScript%20%7C%20PostgreSQL-007ACC?style=for-the-badge&logo=go&logoColor=white" />
 </p>
 
 > Documente seu processo, não apenas seu código.
