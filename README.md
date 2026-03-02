@@ -1,5 +1,7 @@
 # `.log(_)`
 
+![Banner .log(_)](assets/dotlog-slogan.jpg)
+
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Building-orange?style=for-the-badge&logo=gitbook&logoColor=white" />
   <img src="https://img.shields.io/badge/Stack-Java%20%7C%20Python%20%7C%20DevOps-blue?style=for-the-badge" />
