@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 
 const faces = {
-  default: "*_*",
+  default: "_", // Atualizado para o seu novo padrão
   error: ">_<",
   success: "^_^",
   thinking: "o_o",
@@ -15,7 +15,7 @@ type FaceType = keyof typeof faces
 
 export function InteractiveLogo({
   mood = "default",
-  size = "lg",
+  size = "md", // Ajustado para md como padrão da sidebar
 }: {
   mood?: FaceType
   size?: "sm" | "md" | "lg"
@@ -45,14 +45,17 @@ export function InteractiveLogo({
   return (
     <button
       onClick={handleClick}
-      className={`${sizeClasses[size]} font-mono font-bold tracking-tight transition-transform duration-300 cursor-pointer select-none ${isAnimating ? "scale-110" : "scale-100"}`}
+      // tracking-tighter remove o espaço entre as letras da fonte mono
+      className={`${sizeClasses[size]} font-mono font-bold tracking-tighter transition-transform duration-300 cursor-pointer select-none ${isAnimating ? "scale-105" : "scale-100"}`}
       aria-label="Logo interativo do .log()"
     >
-      <span className="text-foreground">.</span>
-      <span className="text-foreground">log</span>
+      {/* Cores conforme seu rascunho: ponto e log em branco/foreground */}
+      <span className="text-foreground">.log</span>
+      
+      {/* Parênteses e Face em azul/primary colados */}
       <span className="text-primary">(</span>
-      <span className="text-primary inline-block min-w-[3ch] text-center transition-all duration-300">
-        {" "}{faces[currentFace]}{" "}
+      <span className="text-primary inline-block transition-all duration-300 px-[1px]">
+        {faces[currentFace]}
       </span>
       <span className="text-primary">)</span>
     </button>
@@ -61,11 +64,10 @@ export function InteractiveLogo({
 
 export function LogoBadge({ type }: { type: FaceType }) {
   return (
-    <span className="text-xs font-mono">
-      <span className="text-muted-foreground">.</span>
-      <span className="text-muted-foreground">log</span>
+    <span className="text-xs font-mono inline-flex items-center tracking-tighter">
+      <span className="text-muted-foreground">.log</span>
       <span className="text-primary">(</span>
-      <span className="text-primary">{faces[type]}</span>
+      <span className="text-primary px-[1px]">{faces[type]}</span>
       <span className="text-primary">)</span>
     </span>
   )

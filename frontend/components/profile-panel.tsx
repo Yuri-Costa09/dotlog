@@ -154,17 +154,42 @@ export function ProfilePanel() {
 
 function ThemePreview({ theme }: { theme: ThemeName }) {
   const colors: Record<ThemeName, string[]> = {
-    terminal: ["bg-[oklch(0.16_0.02_170)]", "bg-[oklch(0.75_0.15_65)]", "bg-[oklch(0.22_0.02_170)]"],
-    cyberpunk: ["bg-[oklch(0.13_0.01_300)]", "bg-[oklch(0.72_0.22_340)]", "bg-[oklch(0.2_0.02_300)]"],
-    dracula: ["bg-[oklch(0.19_0.02_280)]", "bg-[oklch(0.68_0.18_300)]", "bg-[oklch(0.25_0.03_280)]"],
-    mono: ["bg-[oklch(0.08_0_0)]", "bg-[oklch(0.98_0_0)]", "bg-[oklch(0.18_0_0)]"],
+    // Terminal: Fundo quase preto, azul primary e o novo warning (alaranjado)
+    terminal: [
+      "bg-[oklch(0.13_0_0)]",       // --terminal
+      "bg-[oklch(0.62_0.22_264)]",  // --primary (#0055FF)
+      "bg-[oklch(0.8_0.16_80)]"     // --warning (novo tom sem o amarelo)
+    ], 
+    
+    // Cyberpunk: Fundo, rosa neon e o azul do tema
+    cyberpunk: [
+      "bg-[oklch(0.13_0_0)]", 
+      "bg-[oklch(0.72_0.22_340)]", 
+      "bg-[oklch(0.72_0.22_340)]"
+    ],
+    
+    // Dracula: Mantendo a identidade clássica
+    dracula: [
+      "bg-[oklch(0.19_0.02_280)]", 
+      "bg-[oklch(0.68_0.18_300)]", 
+      "bg-[oklch(0.55195_0.1011_254.68)]"
+    ],
+    
+    // Mono: Contraste total
+    mono: [
+      "bg-[oklch(0.08_0_0)]", 
+      "bg-[oklch(0.98_0_0)]", 
+      "bg-[oklch(0.18_0_0)]"
+    ],
   }
+
   const c = colors[theme]
+  
   return (
     <div className="flex gap-0.5">
-      <span className={`w-3 h-3 rounded-sm ${c[0]} border border-border`} />
+      <span className={`w-3 h-3 rounded-sm ${c[0]} border border-border/50`} />
       <span className={`w-3 h-3 rounded-sm ${c[1]}`} />
-      <span className={`w-3 h-3 rounded-sm ${c[2]} border border-border`} />
+      <span className={`w-3 h-3 rounded-sm ${c[2]} border border-border/50`} />
     </div>
   )
 }

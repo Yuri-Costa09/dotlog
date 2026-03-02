@@ -25,7 +25,6 @@ export type LogData = {
   fix?: string
 }
 
-// ✅ FIX: initialLogs now lives exclusively here and is properly exported
 export const initialLogs: LogData[] = [
   {
     id: "1",
