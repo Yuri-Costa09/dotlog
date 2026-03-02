@@ -29,10 +29,9 @@ O projeto reflete meus estudos atuais em desenvolvimento e infraestrutura:
 
 | Camada | Tecnologias |
 |--------|-------------|
-| **Backend** | Java (Spring Boot) / Python |
-| **Infra & DevOps** | Docker, Jenkins, Terraform e Azure (Estudante) |
+| **Backend** | GO |
 | **Database** | SQL (PostgreSQL) |
-| **Estética** | CSS Custom Properties para temas dinâmicos e Pixel Art Icons |
+| **Estética** | CSS Custom Properties para temas dinâmicos |
 
 ---
 
@@ -40,7 +39,7 @@ O projeto reflete meus estudos atuais em desenvolvimento e infraestrutura:
 
 - **Status Dinâmico:** O cabeçalho do post muda conforme o estado do log (Erro, Warning, Resolvido).
 - **Sistema de Patentes:** Títulos como `[Bug Hunter]` e `[Daily Master]` exibidos no perfil.
-- **Reações Técnicas:** Esqueça o "curtir". Use `LGTM`, `F`, `Coffee` ou `Refactor`.
+- **Reações Técnicas:** Esqueça o "curtir". Use `Been There`, `F` e o `Upvote`.
 - **Modo Foco:** Interface baseada em terminal para evitar distrações.
 
 ---
@@ -50,7 +49,6 @@ O projeto reflete meus estudos atuais em desenvolvimento e infraestrutura:
 ```bash
 ├── frontend/        # Interface Pixel Art & Dashboard
 ├── backend/         # API de Logs e Gamificação
-├── devops/          # Scripts de CI/CD, Dockerfiles e IaC
 └── assets/          # Sprites e ícones customizados
 ```
 
