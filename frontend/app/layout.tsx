@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { IBM_Plex_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+const anonymicePro = localFont({
+  src: './fonts/ANONYMICEPRONERDFONTPROPO-REGULAR.ttf',
+  variable: '--font-anonymice',
 })
 
 export const metadata: Metadata = {
-  title: '.log( ) — Documente seu processo',
+  title: '.log(_) — Documente seu processo',
   description: 'Rede social para desenvolvedores documentarem seus processos, erros e aprendizados. Porque todo bug tem uma historia.',
   generator: 'v0.app',
   icons: {
@@ -40,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${ibmPlexMono.className} font-mono antialiased`}>
+    <html lang="pt-BR" className="dark"> 
+      <body className={`${anonymicePro.className} font-mono antialiased bg-black text-white`}>
         {children}
       </body>
     </html>

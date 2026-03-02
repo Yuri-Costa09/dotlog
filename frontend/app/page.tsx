@@ -1,13 +1,13 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import { SprintSidebar } from "@/components/sprint-sidebar"
+import { FolderSidebar } from "@/components/folders-sidebar"
 import { FeedHeader } from "@/components/feed-header"
 // ✅ FIX: initialLogs now correctly comes from log-card — no duplicate definition here
 import { LogCard, type LogData, initialLogs } from "@/components/log-card"
 import { DailyLogButton } from "@/components/daily-log-button"
 import { CreateLogModal } from "@/components/create-log-modal"
-import { EffortGraph } from "@/components/effort-graph"
+// import { EffortGraph } from "@/components/effort-graph"
 import { IDEIntegration } from "@/components/ide-integration"
 import { FocusModeBanner } from "@/components/focus-mode"
 import { UserProvider, useUser } from "@/components/user-context"
@@ -84,7 +84,7 @@ function HomeContent() {
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <SprintSidebar onSelectLog={handleSelectLog} />
+        <FolderSidebar onSelectLog={handleSelectLog} />
       </div>
 
       <main className="flex-1 flex overflow-hidden">
@@ -158,7 +158,6 @@ function HomeContent() {
               </div>
             </div>
 
-            <EffortGraph />
             <IDEIntegration />
 
             <div className="bg-card border border-border rounded-lg p-4">
