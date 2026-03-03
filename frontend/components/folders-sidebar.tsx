@@ -148,7 +148,7 @@ export function FolderSidebar({
             {"L"}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-mono text-sidebar-foreground truncate">lucy_baia</p>
+            <p className="text-xs font-mono text-sidebar-foreground truncate">dev_user</p>
             <p className="text-[10px] text-muted-foreground font-mono">Explorando diretórios</p>
           </div>
         </div>

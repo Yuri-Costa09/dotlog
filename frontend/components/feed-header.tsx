@@ -15,13 +15,13 @@ export function FeedHeader({
   const [activeFilter, setActiveFilter] = useState<FilterType>("todos")
   const [searchOpen, setSearchOpen] = useState(false)
 
-  const filters: { key: FilterType; label: string; color: string }[] = [
-    { key: "todos", label: "Todos", color: "text-card-foreground" },
-    { key: "frustration", label: "T_T Frustracoes", color: "text-frustration" },
-    { key: "error", label: ">_< Erros", color: "text-destructive" },
-    { key: "warning", label: "o_o Avisos", color: "text-warning" },
-    { key: "success", label: "^_^ Resolvidos", color: "text-success" },
-  ]
+const filters: { key: FilterType; label: string; color: string }[] = [
+  { key: "todos", label: "Todos", color: "text-foreground" },
+  { key: "frustration", label: "T_T Frustracoes", color: "text-frustration" }, // Usa --frustration
+  { key: "error", label: ">_< Erros", color: "text-destructive" },
+  { key: "warning", label: "o_o Avisos", color: "text-warning" }, // Usa seu novo tom
+  { key: "success", label: "^_^ Resolvidos", color: "text-success" },
+]
 
   const handleFilter = (filter: FilterType) => {
     setActiveFilter(filter)

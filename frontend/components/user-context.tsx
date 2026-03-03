@@ -4,6 +4,9 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 
 export type ThemeName = "terminal" | "cyberpunk" | "dracula" | "mono"
 
+// Tipo para as variantes de cores dos seus assets SVG
+export type BadgeVariant = "amarelo" | "roxo" | "rosa"
+
 export type Badge = {
   id: string
   label: string
@@ -52,6 +55,7 @@ type UserContextType = {
   setTheme: (theme: ThemeName) => void
   setActiveBadge: (badge: Badge | null) => void
   availableThemes: { name: ThemeName; label: string; unlocked: boolean }[]
+  currentBadgeVariant: BadgeVariant // Nova propriedade para os ícones
 }
 
 const UserContext = createContext<UserContextType | null>(null)
@@ -83,6 +87,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser((prev) => ({ ...prev, activeBadge: badge }))
   }, [])
 
+  // Lógica para definir a cor do badge baseada no tema
+  const getBadgeVariant = (theme: ThemeName): BadgeVariant => {
+    switch (theme) {
+      case "cyberpunk":
+        return "rosa" // Rosa para o tema neon
+      case "dracula":
+        return "roxo" // Roxo para o tema clássico de dev
+      default:
+        return "amarelo" // Amarelo/Laranja técnico para Terminal e Mono
+    }
+  }
+
   const availableThemes = (Object.keys(THEME_UNLOCK_LEVELS) as ThemeName[]).map((name) => ({
     name,
     label: THEME_LABELS[name],
@@ -90,7 +106,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }))
 
   return (
-    <UserContext.Provider value={{ user, setTheme, setActiveBadge, availableThemes }}>
+    <UserContext.Provider 
+      value={{ 
+        user, 
+        setTheme, 
+        setActiveBadge, 
+        availableThemes,
+        currentBadgeVariant: getBadgeVariant(user.theme) // Sincroniza a cor com o tema
+      }}
+    >
       {children}
     </UserContext.Provider>
   )
