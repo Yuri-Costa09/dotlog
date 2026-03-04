@@ -5,12 +5,12 @@ import { FolderSidebar } from "@/components/folders-sidebar"
 import { FeedHeader } from "@/components/feed-header"
 import { LogCard, type LogData, initialLogs } from "@/components/log-card"
 import { CreateLogModal } from "@/components/create-log-modal"
-import { CreateLogTrigger } from "@/components/create-log-trigger" // ✅ Integrando o trigger
+import { CreateLogTrigger } from "@/components/create-log-trigger"
 import { IDEIntegration } from "@/components/ide-integration"
 import { FocusModeBanner } from "@/components/focus-mode"
 import { UserProvider, useUser } from "@/components/user-context"
 import { ProfilePanel } from "@/components/profile-panel"
-import { Flame } from "lucide-react"
+import { Flame, ShieldAlert } from "lucide-react"
 
 const VALID_FILTERS = ["todos", "error", "warning", "frustration", "success"] as const
 type FilterType = (typeof VALID_FILTERS)[number]
@@ -36,8 +36,8 @@ function HomeContent() {
   const [hasPostedToday, setHasPostedToday] = useState(false)
   const [focusDismissed, setFocusDismissed] = useState(false)
 
-  const filteredLogs = activeFilter === "todos" 
-    ? initialLogs 
+  const filteredLogs = activeFilter === "todos"
+    ? initialLogs
     : initialLogs.filter((log) => log.type === activeFilter)
 
   const handleFilterChange = (value: string) => {
@@ -50,10 +50,9 @@ function HomeContent() {
   }
 
   return (
-    // ✅ h-screen e overflow-hidden garantem que a UI preencha a altura toda sem scroll na página inteira
     <div className="h-screen flex overflow-hidden bg-background">
       
-      {/* Sidebar Esquerda: h-full garante que ela estique até o pé da página */}
+      {/* Sidebar Esquerda: Mantida para navegação básica */}
       <div className={`fixed lg:relative z-40 h-full bg-sidebar border-r border-border transition-transform duration-300 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}>
@@ -61,7 +60,7 @@ function HomeContent() {
       </div>
 
       <main className="flex-1 flex overflow-hidden">
-        {/* Coluna Central: Timeline */}
+        {/* Coluna Central: Foco em Moderação */}
         <div className="flex-1 flex flex-col min-w-0 border-r border-border">
           <FeedHeader
             onFilterChange={handleFilterChange}
@@ -69,38 +68,47 @@ function HomeContent() {
           />
 
           <div className="flex-1 overflow-y-auto bg-background/50">
-            {/* ✅ Aumentei o max-w para 4xl para a timeline não ficar tão "espremida" em telas grandes */}
             <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
               
-              {!hasPostedToday && !focusDismissed && (
+              {/* OCULTO: Focus Mode */}
+              {/* {!hasPostedToday && !focusDismissed && (
                 <FocusModeBanner
                   hasPostedToday={hasPostedToday}
                   onDismiss={() => setFocusDismissed(true)}
                 />
-              )}
+              )} */}
 
-              {/* ✅ Novo Gatilho de Log substituindo o botão flutuante */}
-              <div onClick={() => setShowCreateLog(true)}>
+              {/* OCULTO: Gatilho de Criação de Log */}
+              {/* <div onClick={() => setShowCreateLog(true)}>
                 <CreateLogTrigger />
-              </div>
+              </div> */}
 
               <div className="space-y-4">
-                {filteredLogs.map((log) => (
+                {/* PLACEHOLDER: Espaço para o sistema de denúncia/verificação */}
+                <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-primary/20 rounded-xl bg-primary/5">
+                  <ShieldAlert className="w-12 h-12 text-primary/40 mb-4" />
+                  <h2 className="text-lg font-mono font-bold text-foreground">Ambiente de Moderação</h2>
+                  <p className="text-sm text-muted-foreground font-mono mt-2">
+                    Logs ocultos para priorizar o fluxo de verificação e denúncia.
+                  </p>
+                </div>
+
+                {/* OCULTO: Feed de Logs */}
+                {/* {filteredLogs.map((log) => (
                   <div key={log.id} id={`log-${log.id}`}>
                     <LogCard log={log} />
                   </div>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
         </div>
 
-        {/* ✅ Sidebar Direita: bg-card preenche o espaço e h-full evita o fundo vazio */}
-        <aside className="hidden xl:flex w-80 flex-col bg-card/30 overflow-y-auto h-full">
+        {/* OCULTO: Sidebar Direita Completa */}
+        {/* <aside className="hidden xl:flex w-80 flex-col bg-card/30 overflow-y-auto h-full">
           <div className="p-4 space-y-6">
             <ProfilePanel />
 
-            {/* Widget de Status com Grid ajustado */}
             <div className="bg-card border border-border rounded-lg p-4 shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
@@ -122,7 +130,6 @@ function HomeContent() {
 
             <IDEIntegration />
 
-            {/* Tags em Alta */}
             <div className="bg-card border border-border rounded-lg p-4">
               <h2 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-3">
                 # Tags em Alta
@@ -138,6 +145,7 @@ function HomeContent() {
             </div>
           </div>
         </aside>
+        */}
       </main>
 
       {showCreateLog && <CreateLogModal onClose={handleCreateLogClose} />}
